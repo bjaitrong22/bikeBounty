@@ -41,29 +41,31 @@ const stolenBikes = () => {
   const url = `https://bikeindex.org:443/api/v3/search?location=IP&distance=10&stolenness=stolen`;
   fetch(url)
     .then((response) => {
-      console.log('response');
-      console.log(response);
       return response.json();
     })
     .then((data) => {
       console.log('data');
       console.log(data);
-      const stolenBike = {
-        bike: data.bikes[0].manufacturer_name,
-        colors: data.bikes[0]['frame_colors'].map((colors) => colors).join(', ')
-      };
-      displayStolenBike(stolenBike);
+      const stolenBikes = [];
+      for (let i = 0; i < data.bikes.length; i++) {
+        const stolenBike = {
+          bike: data.bikes[i].manufacturer_name,
+          colors: data.bikes[i]['frame_colors'].map((colors) => colors).join(', ')
+        };
+        stolenBikes.push(stolenBike);
+      }
+      console.log('stolenBikes');
+      console.log(stolenBikes);
+      displayStolenBike(stolenBikes);
     });
 };
 
-function displayStolenBike(stolenBike) {
+const displayStolenBike = (stolenBikes) => {
   const outputDiv = document.getElementById('divOutput');
-  const p1 = document.createElement('p');
-  const p2 = document.createElement('p');
-  p1.innerHTML = stolenBike.bike;
-  p2.innerHTML = stolenBike.colors;
-  outputDiv.append(p1);
-  outputDiv.append(p2);
-}
+  const bikesHTMLString = stolenBikes.map ( stolenBike => `
+  <p>Bike Manufacturer: ${stolenBike.bike}, Colors: ${stolenBike.colors}</p>
+  `).join('');
+  outputDiv.innerHTML = bikesHTMLString;
+};
 
 stolenBikes();
