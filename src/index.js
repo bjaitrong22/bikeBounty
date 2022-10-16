@@ -37,10 +37,13 @@
 // Bike API: https://api.99spokes.com/docs
 //
 
+import './css/styles.css'
+
 const stolenBikes = () => {
   const url = `https://bikeindex.org:443/api/v3/search?location=IP&distance=10&stolenness=stolen`;
   fetch(url)
     .then((response) => {
+      console.log(response);
       return response.json();
     })
     .then((data) => {

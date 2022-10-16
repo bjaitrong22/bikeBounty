@@ -1,4 +1,15 @@
-
-#divOutPut {
+h1 {
   text-align: center;
+  margin-top: 40px;
+}
+
+#divOutput {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+#divOutput img {
+  width: 375px;
+  height: auto;
 }
