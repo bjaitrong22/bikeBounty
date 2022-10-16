@@ -52,7 +52,9 @@ const stolenBikes = () => {
           bike: data.bikes[i].manufacturer_name,
           colors: data.bikes[i]['frame_colors'].map((colors) => colors).join(', '),
           status: data.bikes[i].status,
-          location: data.bikes[i].stolen_location
+          serial: data.bikes[i].serial,
+          location: data.bikes[i].stolen_location,
+          image: data.bikes[i].large_img
         };
         stolenBikes.push(stolenBike);
       }
@@ -65,8 +67,9 @@ const stolenBikes = () => {
 const displayStolenBike = (stolenBikes) => {
   const outputDiv = document.getElementById('divOutput');
   const bikesHTMLString = stolenBikes.map ( stolenBike => `
-  <p>Bike Manufacturer: ${stolenBike.bike}.</p> <p>Colors: ${stolenBike.colors}.</p> <p>Status: ${stolenBike.status} in ${stolenBike.location}!</p><br>
-  `).join('');
+  <img src="${stolenBike.image}"/>
+  <p><strong>Bike Manufacturer:</strong> ${stolenBike.bike}. <br> <strong>Serial Number:</strong> ${stolenBike.serial}</p> <p><strong>Color(s):</strong> ${stolenBike.colors}.</p> <p><strong>Status:</strong> ${stolenBike.status} in ${stolenBike.location}!</p> <hr>
+  `).join('<br>');
   outputDiv.innerHTML = bikesHTMLString;
 };
 
