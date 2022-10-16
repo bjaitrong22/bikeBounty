@@ -48,9 +48,22 @@ const stolenBikes = () => {
     .then((data) => {
       console.log('data');
       console.log(data);
-      //const stolenBike = {};
-      //stolenBike['manufacturer_name'] = data.manufacturer_name,
-      //stolenBike['color'] = data.frame_colors
+      const stolenBike = {
+        bike: data.bikes[0].manufacturer_name,
+        colors: data.bikes[0]['frame_colors'].map((colors) => colors).join(', ')
+      };
+      displayStolenBike(stolenBike);
     });
 };
+
+function displayStolenBike(stolenBike) {
+  const outputDiv = document.getElementById('divOutput');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  p1.innerHTML = stolenBike.bike;
+  p2.innerHTML = stolenBike.colors;
+  outputDiv.append(p1);
+  outputDiv.append(p2);
+}
+
 stolenBikes();
