@@ -34,7 +34,7 @@
 
 //getStolenBikes();
 
-
+// Bike API: https://api.99spokes.com/docs
 //
 
 const stolenBikes = () => {
@@ -68,7 +68,11 @@ const displayStolenBike = (stolenBikes) => {
   const outputDiv = document.getElementById('divOutput');
   const bikesHTMLString = stolenBikes.map ( stolenBike => `
   <img src="${stolenBike.image}"/>
-  <p><strong>Bike Manufacturer:</strong> ${stolenBike.bike}. <br> <strong>Serial Number:</strong> ${stolenBike.serial}</p> <p><strong>Color(s):</strong> ${stolenBike.colors}.</p> <p><strong>Status:</strong> ${stolenBike.status} in ${stolenBike.location}!</p> <hr>
+  <p><strong>Bike Manufacturer:</strong> ${stolenBike.bike}.
+  <br>
+  <strong>Serial Number:</strong> ${stolenBike.serial}</p>
+  <p><strong>Color(s):</strong> ${stolenBike.colors}.</p>
+  <p><strong>Status:</strong> ${stolenBike.status} in ${stolenBike.location}!</p> <hr>
   `).join('<br>');
   outputDiv.innerHTML = bikesHTMLString;
 };
