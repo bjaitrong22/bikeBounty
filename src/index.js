@@ -50,7 +50,9 @@ const stolenBikes = () => {
       for (let i = 0; i < data.bikes.length; i++) {
         const stolenBike = {
           bike: data.bikes[i].manufacturer_name,
-          colors: data.bikes[i]['frame_colors'].map((colors) => colors).join(', ')
+          colors: data.bikes[i]['frame_colors'].map((colors) => colors).join(', '),
+          status: data.bikes[i].status,
+          location: data.bikes[i].stolen_location
         };
         stolenBikes.push(stolenBike);
       }
@@ -63,7 +65,7 @@ const stolenBikes = () => {
 const displayStolenBike = (stolenBikes) => {
   const outputDiv = document.getElementById('divOutput');
   const bikesHTMLString = stolenBikes.map ( stolenBike => `
-  <p>Bike Manufacturer: ${stolenBike.bike}, Colors: ${stolenBike.colors}</p>
+  <p>Bike Manufacturer: ${stolenBike.bike}.</p> <p>Colors: ${stolenBike.colors}.</p> <p>Status: ${stolenBike.status} in ${stolenBike.location}!</p><br>
   `).join('');
   outputDiv.innerHTML = bikesHTMLString;
 };
