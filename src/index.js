@@ -1,16 +1,13 @@
-//Business Logic
-
 // Bike API: https://api.99spokes.com/docs
-//
-
 import StolenBike from './classes/stolenBike';
 import './css/styles.css';
+
+//Business Logic
 
 const stolenBikes = () => {
   const url = `https://bikeindex.org:443/api/v3/search?location=IP&distance=10&stolenness=stolen`;
   fetch(url)
     .then((response) => {
-      console.log(response);
       return response.json();
     })
     .then((data) => {
@@ -35,7 +32,9 @@ const displayStolenBike = (stolenBikes) => {
   <br>
   <strong>Serial Number:</strong> ${stolenBike.serial}</p>
   <p><strong>Color(s):</strong> ${stolenBike.colors}.</p>
-  <p><strong>Status:</strong> ${stolenBike.status} in ${stolenBike.location}!</p> <hr>
+  <p><strong>Status:</strong> ${stolenBike.status} in ${stolenBike.location}!</p>
+  <p>Bounty: ${stolenBike.bounty}</p>
+  <hr>
   `).join('<br>');
   outputDiv.innerHTML = bikesHTMLString;
 };

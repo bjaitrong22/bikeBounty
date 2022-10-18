@@ -23,7 +23,7 @@ export default function getBounty(bikeManu) {
     case 'privateer':
     case 'raleigh':
       bountyPrice = 125;
-    break;
+      break;
     case 'schwinn':
     case 'dynacraft':
     case 'kent':
@@ -33,13 +33,8 @@ export default function getBounty(bikeManu) {
       bountyPrice = 1;
       break;
   }
-  console.log('Bike Bounty');
-  console.log(bikeManu);
   return bountyPrice;
 }
-
-
-
 
 /* Bike Tier List
 God: HUFFY / mongoose
