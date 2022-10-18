@@ -1,7 +1,41 @@
 export default function getBounty(bikeManu) {
+  let bountyPrice;
+  switch (bikeManu.toLowerCase()) {
+    case 'huffy':
+    case 'mongoose':
+      bountyPrice = 10000;
+      break;
+    case 'rad power':
+    case 'gazelle':
+    case 'devinci':
+      bountyPrice = 500;
+      break;
+    case 'norco':
+    case 'bianci':
+    case 'specialized':
+    case 'fuji':
+      bountyPrice = 250;
+      break;
+    case 'giant':
+    case 'trek':
+    case 'cannondale':
+    case 'scott':
+    case 'privateer':
+    case 'raleigh':
+      bountyPrice = 125;
+    break;
+    case 'schwinn':
+    case 'dynacraft':
+    case 'kent':
+      bountyPrice = 50;
+      break;
+    default:
+      bountyPrice = 1;
+      break;
+  }
   console.log('Bike Bounty');
   console.log(bikeManu);
-  return 5.99;
+  return bountyPrice;
 }
 
 

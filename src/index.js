@@ -3,8 +3,8 @@
 // Bike API: https://api.99spokes.com/docs
 //
 
-import './css/styles.css'
-import getBounty from './utility/Bounty';
+import StolenBike from './classes/stolenBike';
+import './css/styles.css';
 
 const stolenBikes = () => {
   const url = `https://bikeindex.org:443/api/v3/search?location=IP&distance=10&stolenness=stolen`;
@@ -18,15 +18,7 @@ const stolenBikes = () => {
       console.log(data);
       const stolenBikes = [];
       for (let i = 0; i < data.bikes.length; i++) {
-        const stolenBike = {
-          bike: data.bikes[i].manufacturer_name,
-          colors: data.bikes[i]['frame_colors'].map((colors) => colors).join(', '),
-          status: data.bikes[i].status,
-          serial: data.bikes[i].serial,
-          location: data.bikes[i].stolen_location,
-          image: data.bikes[i].large_img,
-          bounty: getBounty(data.bikes[i].manufacturer_name)
-        };
+        const stolenBike = new StolenBike(data.bikes[i]);
         stolenBikes.push(stolenBike);
       }
       console.log('stolenBikes');
