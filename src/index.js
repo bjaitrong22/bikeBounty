@@ -33,7 +33,7 @@ const displayStolenBike = (stolenBikes) => {
   <strong>Serial Number:</strong> ${stolenBike.serial}</p>
   <p><strong>Color(s):</strong> ${stolenBike.colors}.</p>
   <p><strong>Status:</strong> ${stolenBike.status} in ${stolenBike.location}!</p>
-  <p>Bounty: ${stolenBike.bounty}</p>
+  <p><strong>Bounty:</strong> $${stolenBike.bounty}</p>
   <hr>
   `).join('<br>');
   outputDiv.innerHTML = bikesHTMLString;

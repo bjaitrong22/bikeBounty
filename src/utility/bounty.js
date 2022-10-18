@@ -30,7 +30,7 @@ export default function getBounty(bikeManu) {
       bountyPrice = 50;
       break;
     default:
-      bountyPrice = 1;
+      bountyPrice = 25;
       break;
   }
   return bountyPrice;
